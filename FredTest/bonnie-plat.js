@@ -169,10 +169,10 @@ class Room1 {
 		this.x = 0;
 		this.y = 0;
 		
-		this.sx = 418;
-		this.sy = 180;
+		this.sx = 417;
+		this.sy = 179;
 		this.sWidth = 176;
-		this.sHeight = 133;
+		this.sHeight = 130;
 		this.width = canvas.width;
 		this.height = canvas.height;
 	}
@@ -194,9 +194,9 @@ class shadowFreddyMove {
 	constructor() {
 
 		this.image = shadowFredImg
-		this.x = 785;
+		this.x = 999000;
 
-		this.y = 500;
+		this.y = 999000;
 
 		this.sx = 0;
 
@@ -263,108 +263,60 @@ window.addEventListener("keypress", (event) => {
 		Bonnie.move(0, 5, 0, 0);
 	}
 });
+const moveShadowFredMoveRight = () => {
+	shadowFred.move(10, 0, 0, 400)
+}
+const moveShadowFredMoveLeft = () => {
+	shadowFred.move(10, 0, 0, 200)
+}
+const moveShadowFredMoveUp = () => {
+	shadowFred.move(0, -10, 0, 600)
+}
+const moveShadowFredMoveDown = () => {
+	shadowFred.move(0, 10, 0, 0)
+}
+setInterval(moveShadowFredMoveRight, 500);
+setInterval(moveShadowFredMoveLeft, 500);
+setInterval(moveShadowFredMoveUp, 500);
+setInterval(moveShadowFredMoveDown, 500);
 
-		
-
+const shadowFredSpawn = () => {
+	clearInterval(ShadowFredMoveRight());
+	clearInterval(undefined);
+	clearInterval(undefined);
+	clearInterval(undefined);
+	if(roomNum === 0){inRoom = false}
+	let randNum = Math.random();
+	randNum
+	if(randNum > 0.5){shadowFred.x = 999999; shadowFred.y = 999999; inRoom = false};
+	if(randNum < 0.5){shadowFred.x = 785; shadowFred.y = 500; inRoom = true};
 	
-
+		
+	}
+	
+	let inRoom = false;
 		
 
 let collumNum = 0;
 let rowNum = 0;
-let roomNum = 0;
+let roomNum = 2;
 
 
 
 			let update = (timestamp) => {				
 				ctx.clearRect(0, 0, canvas.width, canvas.height)
-	if(building1.sy === 47){rowNum = 0}
-	if(building1.sy === 180){rowNum = 1}
-	if(building1.sy === 313){rowNum = 2}
-	if(building1.sy === 446){rowNum = 3}
-	if(building1.sy === 579){rowNum = 4}
+	if(building1.sy === 46){rowNum = 0}
+	if(building1.sy === 179){rowNum = 1}
+	if(building1.sy === 312){rowNum = 2}
+	if(building1.sy === 445){rowNum = 3}
+	if(building1.sy === 578){rowNum = 4}
 
-	if(building1.sy === 66){collumNum = 1}
-	if(building1.sx=== 242){collumNum = 2}
-	if(building1.sx === 418){collumNum = 3}
-	if(building1.sx === 594){collumNum = 4}
-	if(building1.sx === 770){collumNum = 5}
+	if(building1.sy === 65){collumNum = 1}
+	if(building1.sx === 241){collumNum = 2}
+	if(building1.sx === 417){collumNum = 3}
+	if(building1.sx === 593){collumNum = 4}
+	if(building1.sx === 769){collumNum = 5}
 	
-
-	
-	const eventRoomChange = new Event("roomChange", {}); 
-
-				if(Bonnie.sx > 200)
-				{Bonnie.sx = 0};
-
-				if(shadowFred.sx > 200)
-				{shadowFred.sx = 0};
-
-	
-				if (Bonnie.x > 2042){Bonnie.x = 0; Bonnie.y = Bonnie.y; building1.sx = building1.sx + 176; dispatchEvent(eventRoomChange)}
-				if (Bonnie.x < -100){Bonnie.x = 2042; Bonnie.y = Bonnie.y; building1.sx = building1.sx - 176; dispatchEvent(eventRoomChange)}
-				if (Bonnie.y > 1532){Bonnie.y = 0; Bonnie.x = Bonnie.x; building1.sy = building1.sy + 133; dispatchEvent(eventRoomChange)}
-				if (Bonnie.y < 0){Bonnie.y = 1532; Bonnie.x = Bonnie.x; building1.sy = building1.sy - 133; dispatchEvent(eventRoomChange)}
-				
-				if (shadowFred.x > 2042){shadowFred.x = 0, shadowFred.y = shadowFred.y}
-				if (shadowFred.x < -100){shadowFred.x = 2042, shadowFred.y = shadowFred.y}
-				if (shadowFred.y > 1532){shadowFred.y = 0, shadowFred.x = shadowFred.x}
-				if (shadowFred.y < 0){shadowFred.y = 1532, shadowFred.x = shadowFred.x}
-				console.log(building1.sx, building1.sy, "Building room cord", roomNum)
-		let erro = false;
-		if(roomNum === 0 ){erro = true}	else {erro = false}
-		
-	
-	   building1.draw();
-	   shadowFred.draw();
-		Bonnie.draw();
-		if(erro === false){shadowTalk.draw()};
-		if(erro === true){shadowTalk.y = -100} else {shadowTalk.y = 0};
-		if(roomNum === 0){	err.draw();};
-		makeCover.draw();
-		
-		
-		requestAnimationFrame(update)
-	
-			}
-			requestAnimationFrame(update) 
-const spriteChangerBonnie = () => {
-	Bonnie.sx = Bonnie.sx +200
-}
-
-setInterval(spriteChangerBonnie, 500)
-
-const spriteChangerShadowFred = () => {
-	shadowFred.sx = shadowFred.sx +200
-	
-}
-const coverMove = () => {
-	makeCover.sx = makeCover.sx +200
-	
-}
-
-
-let searching = "true";
-
-setInterval(spriteChangerShadowFred, 500)
-
-
-	addEventListener("roomChange", (event) => {
-		
-		const ShadowFredMoveRight = () => {
-			shadowFred.move(+10, +0, +0, +400)
-		}
-		const ShadowFredMoveLeft = () => {
-			shadowFred.move(-10, +0, +0, +200)
-		}
-		const ShadowFredMoveUp = () => {
-			shadowFred.move(+0, -10, +0, +600)
-		}
-		const ShadowFredMoveDown = () => {
-			shadowFred.move(+0, +10, +0, +0)
-		}
-		
-		
 
 	if(collumNum === 5 && rowNum === 0){
 		roomNum = 0};
@@ -411,35 +363,99 @@ setInterval(spriteChangerShadowFred, 500)
 	if(collumNum === 4 && rowNum === 4){
 		roomNum = 13};
 	
+	
+	const eventRoomChange = new Event("roomChange", {}); 
+
+				if(Bonnie.sx > 200)
+				{Bonnie.sx = 0};
+
+				if(shadowFred.sx > 200)
+				{shadowFred.sx = 0};
+
+	
+				if (Bonnie.x > 1945)
+				{Bonnie.x = -80; Bonnie.y = Bonnie.y; building1.sx = building1.sx + 176; dispatchEvent(eventRoomChange)}
+				if (Bonnie.x < -310)
+				{Bonnie.x = 1715; Bonnie.y = Bonnie.y; building1.sx = building1.sx - 176; dispatchEvent(eventRoomChange)}
+				if (Bonnie.y > 1519)
+				{Bonnie.y = 4; Bonnie.x = Bonnie.x; building1.sy = building1.sy + 133; dispatchEvent(eventRoomChange)}
+				if (Bonnie.y < -391)
+				{Bonnie.y = 1149; Bonnie.x = Bonnie.x; building1.sy = building1.sy - 133; dispatchEvent(eventRoomChange)}
+				
+				if (shadowFred.x > 2042){inRoom = false}
+				if (shadowFred.x < -100){inRoom = false}
+				if (shadowFred.y > 1532){inRoom = false}
+				if (shadowFred.y < 0){inRoom = false}
+				console.log(building1.sx, building1.sy, "Building room cord", roomNum, inRoom)
+		let erro = false;
+		if(roomNum === 0 ){erro = true}	else {erro = false}
+
+	
+	   building1.draw();
+		shadowFred.draw();
+		Bonnie.draw();
+		if(inRoom === true){shadowTalk.draw()};
+		if(erro === true){shadowTalk.y = -100} else {shadowTalk.y = 0};
+		if(roomNum === 0){	err.draw();};
+		makeCover.draw();
+		
+		
+		requestAnimationFrame(update)
+	
+			}
+			requestAnimationFrame(update) 
+const spriteChangerBonnie = () => {
+	Bonnie.sx = Bonnie.sx +200
+}
+
+setInterval(spriteChangerBonnie, 500)
+
+const spriteChangerShadowFred = () => {
+	shadowFred.sx = shadowFred.sx +200
+	
+}
+const coverMove = () => {
+	makeCover.sx = makeCover.sx +200
+	
+}
 
 
-if(roomNum === 1 ){setInterval(ShadowFredMoveRight, 500), console.log("moving right")};
 
-if(roomNum === 2 ){setInterval(ShadowFredMoveRight, 500), console.log("moving right")};
+setInterval(spriteChangerShadowFred, 500)
 
-if(roomNum === 3 ){setInterval(ShadowFredMoveRight, 500), console.log("moving right")};
 
-if(roomNum === 4 ){setInterval(ShadowFredMoveRight, 500), console.log("moving right")};
+	addEventListener("roomChange", (event) => {
+		
+		shadowFredSpawn();
+		
 
-if(roomNum === 5){setInterval(ShadowFredMoveUp, 500), console.log("moving up")};
+if(roomNum === 1 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
 
-if(roomNum === 6 ){setInterval(ShadowFredMoveRight, 500), console.log("moving right")};
+if(roomNum === 2 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
 
-if(roomNum === 7 ){setInterval(ShadowFredMoveRight, 500), console.log("moving right")};
+if(roomNum === 3 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
 
-if(roomNum === 8 ){setInterval(ShadowFredMoveUp, 500), console.log("moving up")};
+if(roomNum === 4 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
 
-if(roomNum === 8.5 ){setInterval(ShadowFredMoveUp, 500), console.log("moving up")};
+if(roomNum === 5){setInterval(ShadowFredMoveUp, 500); console.log("moving up")};
 
-if(roomNum === 9 ){setInterval(ShadowFredMoveDown, 500), console.log("moving down")};
+if(roomNum === 6 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
 
-if(roomNum === 10 ){setInterval(ShadowFredMoveUp, 500), console.log("moving up")};
+if(roomNum === 7 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
 
-if(roomNum === 11 ){setInterval(ShadowFredMoveRight, 500), console.log("moving right")};
+if(roomNum === 8 ){setInterval(ShadowFredMoveUp, 500); console.log("moving up")};
 
-if(roomNum === 12 ){setInterval(ShadowFredMoveRight, 500), console.log("moving right")};
+if(roomNum === 8.5 ){setInterval(ShadowFredMoveUp, 500); console.log("moving up")};
 
-if(roomNum === 13 ){setInterval(ShadowFredMoveUp, 500), console.log("moving up")};
+if(roomNum === 9 ){setInterval(ShadowFredMoveDown, 500); console.log("moving down")};
+
+if(roomNum === 10 ){setInterval(ShadowFredMoveUp, 500); console.log("moving up")};
+
+if(roomNum === 11 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
+
+if(roomNum === 12 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
+
+if(roomNum === 13 ){setInterval(ShadowFredMoveUp, 500); console.log("moving up")};
 	}
 	)
  
