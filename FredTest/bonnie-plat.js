@@ -260,22 +260,40 @@ class shadowFreddyMove {
 	
 
 const ShadowFredMoveRight = () => {
-	shadowFred.move(10, 0, 0, 400)
+	shadowFred.move(40, 0, 0, 400)
 }
 const ShadowFredMoveLeft = () => {
-	shadowFred.move(10, 0, 0, 200)
+	shadowFred.move(40, 0, 0, 200)
 }
 const ShadowFredMoveUp = () => {
-	shadowFred.move(0, -10, 0, 600)
+	shadowFred.move(0, -40, 0, 600)
 }
 const ShadowFredMoveDown = () => {
-	shadowFred.move(0, 10, 0, 0)
+	shadowFred.move(0, 40, 0, 0)
 }
+
+
 let collumNum = 3;
 let rowNum = 1;
 let roomNum = 3;
-
+let shawdowMoving = false;
 	let FredRoomMove = function() {
+		clearInterval(3)
+		clearInterval(4)
+		clearInterval(5)
+		clearInterval(6)
+		clearInterval(7)
+		clearInterval(8)
+		clearInterval(9)
+		clearInterval(10)
+		clearInterval(11)
+		clearInterval(12)
+		clearInterval(13)
+		clearInterval(14)
+		clearInterval(15)
+		clearInterval(16)
+		clearInterval(17)
+	
 		
 		shadowFred = new shadowFreddyMove();
 		let randNum = Math.random();
@@ -342,33 +360,34 @@ let roomNum = 3;
 	roomNum = 13};
 
 if(roomNum === 0 ){};
-if(roomNum === 1 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
+if(roomNum === 1 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right"); shawdowMoving = true};
 
-if(roomNum === 2 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
+if(roomNum === 2 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right"); shawdowMoving = true};
 
-if(roomNum === 3 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
+if(roomNum === 3 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right"); shawdowMoving = true};
 
-if(roomNum === 4 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
+if(roomNum === 4 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right"); shawdowMoving = true};
 
-if(roomNum === 5){setInterval(ShadowFredMoveUp, 500); console.log("moving up")};
+if(roomNum === 5){setInterval(ShadowFredMoveUp, 500); console.log("moving up"); shawdowMoving = true};
 
-if(roomNum === 6 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
+if(roomNum === 6 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right"); shawdowMoving = true};
 
-if(roomNum === 7 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
+if(roomNum === 7 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right"); shawdowMoving = true};
 
-if(roomNum === 8 ){setInterval(ShadowFredMoveUp, 500); console.log("moving up")};
+if(roomNum === 8 ){setInterval(ShadowFredMoveUp, 500); console.log("moving up"); shawdowMoving = true};
 
-if(roomNum === 8.5 ){setInterval(ShadowFredMoveUp, 500); console.log("moving up")};
+if(roomNum === 8.5 ){setInterval(ShadowFredMoveUp, 500); console.log("moving up"); shawdowMoving = true};
 
-if(roomNum === 9 ){setInterval(ShadowFredMoveDown, 500); console.log("moving down")};
+if(roomNum === 9 ){setInterval(ShadowFredMoveDown, 500); console.log("moving down"); shawdowMoving = true};
 
-if(roomNum === 10 ){setInterval(ShadowFredMoveUp, 500); console.log("moving up")};
+if(roomNum === 10 ){setInterval(ShadowFredMoveUp, 500); console.log("moving up"); shawdowMoving = true};
 
-if(roomNum === 11 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
+if(roomNum === 11 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right"); shawdowMoving = true};
 
-if(roomNum === 12 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right")};
+if(roomNum === 12 ){setInterval(ShadowFredMoveRight, 500); console.log("moving right"); shawdowMoving = true};
 
-if(roomNum === 13 ){setInterval(ShadowFredMoveUp, 500); console.log("moving up")};
+if(roomNum === 13 ){setInterval(ShadowFredMoveUp, 500); console.log("moving up"); shawdowMoving = true};
+
 	}
 	
 	
