@@ -12,19 +12,19 @@ let width = 100;
 let height = 100;
 
 var shadowFredImg = new Image();
-shadowFredImg.src = "shadow-Fred.png";
+shadowFredImg.src = "./images/shadow-Fred.png";
 
 var extraSpritesImg = new Image();
-extraSpritesImg.src = "./extra-sprites.png";
+extraSpritesImg.src = "./images/extra-sprites.png";
 
 var coverImg = new Image();
-coverImg.src = "pixel-cover.png";
+coverImg.src = "./images/pixel-cover.png";
 
 var fredRoomImg1 = new Image();
-fredRoomImg1.src = "./fredRoom.png";
+fredRoomImg1.src = "./images/fredRoom.png";
 
 var bonnieImg = new Image();
-bonnieImg.src = "./BonnieSprites.png";
+bonnieImg.src = "./images/BonnieSprites.png";
 
 const up = [0, -40, 0, 600];
 const down = [0, 40, 0, 0];
