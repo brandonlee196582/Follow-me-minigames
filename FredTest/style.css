@@ -1,21 +1,25 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #game-canvas {
-	width: 2042px;
-	height: 1532px;
-	border: solid 4px #5e1db3;
-	border-style: solid;
+    width: 2042px;
+    height: 1532px;
+    border: solid 4px #5e1db3;
+    border-style: solid;
+}
+
+.gameImage {
+    display: none;
 }
