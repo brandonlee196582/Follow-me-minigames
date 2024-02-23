@@ -31,36 +31,82 @@ const down = [0, 40, 0, 0];
 const left = [];
 const right = [40, 0, 0, 400];
 
-const gameMap = [
-    { room: null, x: 65, y: 46, moveShadow: null, intervals: [] },
-    { room: null, x: 65, y: 179, moveShadow: right, intervals: [] },
-    { room: null, x: 65, y: 312, moveShadow: null, intervals: [] },
-    { room: null, x: 65, y: 445, moveShadow: null, intervals: [] },
-    { room: null, x: 65, y: 578, moveShadow: null, intervals: [] },
-    { room: null, x: 241, y: 46, moveShadow: null, intervals: [] },
-    { room: null, x: 241, y: 179, moveShadow: right, intervals: [] },
-    { room: null, x: 241, y: 312, moveShadow: right, intervals: [] },
-    { room: null, x: 241, y: 445, moveShadow: up, intervals: [] },
-    { room: null, x: 241, y: 578, moveShadow: right, intervals: [] },
-    { room: null, x: 417, y: 46, moveShadow: null, intervals: [] },
-    { room: null, x: 417, y: 179, moveShadow: right, intervals: [] },
-    { room: null, x: 417, y: 312, moveShadow: right, intervals: [] },
-    { room: null, x: 417, y: 445, moveShadow: null, intervals: [] },
-    { room: null, x: 417, y: 578, moveShadow: right, intervals: [] },
-    { room: null, x: 593, y: 46, moveShadow: null, intervals: [] },
-    { room: null, x: 593, y: 179, moveShadow: right, intervals: [] },
-    { room: null, x: 593, y: 312, moveShadow: up, intervals: [] },
-    { room: null, x: 593, y: 445, moveShadow: up, intervals: [] },
-    { room: null, x: 593, y: 578, moveShadow: up, intervals: [] },
-    { room: 0, x: 769, y: 46, moveShadow: null, intervals: [] },
-    { room: null, x: 769, y: 179, moveShadow: up, intervals: [] },
-    { room: null, x: 769, y: 312, moveShadow: up, intervals: [] },
-    { room: null, x: 769, y: 445, moveShadow: null, intervals: [] },
-    { room: null, x: 769, y: 578, moveShadow: null, intervals: [] },
-];
+class Room {
+    static allRooms = [];
+    static currentRoom = null;
 
-let currentRoom = gameMap[1];
+    constructor(room, cordinates, moveShadow, obstacles) {
+        this.room = room;
+        this.cordinates = cordinates;
+        this.moveShadow = moveShadow;
+        this.obstacles = obstacles;
+        this.intervals = [];
+    }
+
+    static getCurrentRoom() {
+        return this.currentRoom;
+    }
+
+    static setCurrentRoom(newRoom) {
+        this.currentRoom = newRoom;
+    }
+
+    static getAllRooms() {
+        return this.allRooms;
+    }
+
+    static addRoom(roomToAdd) {
+        this.allRooms.push(roomToAdd);
+    }
+}
+
+Room.addRoom(new Room(1, { x: 65, y: 46 }, null, []));
+Room.addRoom(new Room(2, { x: 65, y: 179 }, right, []));
+Room.addRoom(new Room(3, { x: 65, y: 312 }, null, []));
+Room.addRoom(new Room(4, { x: 65, y: 445 }, null, []));
+Room.addRoom(new Room(5, { x: 65, y: 578 }, null, []));
+Room.addRoom(new Room(6, { x: 241, y: 46 }, null, []));
+Room.addRoom(
+    new Room(7, { x: 241, y: 179 }, right, [
+        { xFrom: -305, xTo: 80, yFrom: 134, yTo: -391 },
+        { xFrom: -305, xTo: 1945, yFrom: -150, yTo: -391 },
+        { xFrom: 1545, xTo: 1945, yFrom: 134, yTo: -391 },
+    ])
+);
+Room.addRoom(new Room(8, { x: 241, y: 312 }, right, []));
+Room.addRoom(new Room(9, { x: 241, y: 445 }, up, []));
+Room.addRoom(new Room(10, { x: 241, y: 578 }, right, []));
+Room.addRoom(new Room(11, { x: 417, y: 46 }, null, []));
+Room.addRoom(
+    new Room(12, { x: 417, y: 179 }, right, [
+        { xFrom: -305, xTo: 80, yFrom: 134, yTo: -391 },
+        { xFrom: -305, xTo: 1945, yFrom: -150, yTo: -391 },
+        { xFrom: 1545, xTo: 1945, yFrom: 134, yTo: -391 },
+    ])
+);
+Room.addRoom(new Room(13, { x: 417, y: 312 }, right, []));
+Room.addRoom(new Room(14, { x: 417, y: 445 }, null, []));
+Room.addRoom(new Room(15, { x: 417, y: 578 }, right, []));
+Room.addRoom(new Room(16, { x: 593, y: 46 }, null, []));
+Room.addRoom(
+    new Room(17, { x: 593, y: 179 }, right, [
+        { xFrom: -305, xTo: 80, yFrom: 134, yTo: -391 },
+        { xFrom: -305, xTo: 1945, yFrom: -150, yTo: -391 },
+        { xFrom: 1545, xTo: 1945, yFrom: 134, yTo: -391 },
+    ])
+);
+Room.addRoom(new Room(18, { x: 593, y: 312 }, up, []));
+Room.addRoom(new Room(19, { x: 593, y: 445 }, up, []));
+Room.addRoom(new Room(20, { x: 593, y: 578 }, up, []));
+Room.addRoom(new Room(21, { x: 769, y: 46 }, null));
+Room.addRoom(new Room(22, { x: 769, y: 179 }, up, []));
+Room.addRoom(new Room(23, { x: 769, y: 312 }, up, []));
+Room.addRoom(new Room(24, { x: 769, y: 445 }, null, []));
+Room.addRoom(new Room(25, { x: 769, y: 578 }, null, []));
+
+Room.setCurrentRoom(Room.getAllRooms()[11]);
 let shadowInRoom = false;
+let bonnieWalkCycleInterval = null;
 
 class BonnieMove {
     constructor() {
@@ -76,9 +122,66 @@ class BonnieMove {
     }
 
     move(xMod, yMod, sxMod, syMod) {
-        this.x = this.x + xMod;
-        this.y = this.y + yMod;
+        // @ts-ignore
+        let xModChange = xMod;
+        let yModChange = yMod;
+        let allowUp = true;
+        let allowDown = true;
+        let allowLeft = true;
+        let allowRight = true;
+        // @ts-ignore
+        Room.getCurrentRoom().obstacles.forEach((obstacle, index) => {
+            let tContact = this.y >= obstacle.yTo;
+            let bContact = this.y <= obstacle.yFrom;
+            let lContact = this.x >= obstacle.xFrom;
+            let rContact = this.x <= obstacle.xTo;
+            let tolerance = 50;
 
+            if (tContact && bContact && lContact && rContact) {
+                if (
+                    this.y - obstacle.yFrom <= tolerance ||
+                    this.y - obstacle.yFrom <= -tolerance
+                ) {
+                    allowUp = false;
+                }
+
+                if (
+                    this.y - obstacle.yTo <= tolerance ||
+                    this.y - obstacle.yTo <= -tolerance
+                ) {
+                    allowDown = false;
+                }
+                if (
+                    this.x - obstacle.xTo >= -tolerance ||
+                    obstacle.xTo - this.x <= tolerance
+                ) {
+                    allowLeft = false;
+                }
+                if (
+                    this.x - obstacle.xFrom <= tolerance ||
+                    obstacle.xFrom - this.x >= -tolerance
+                ) {
+                    allowRight = false;
+                }
+            }
+        });
+        if (!allowUp) {
+            if (yMod < 1) {
+                yModChange = 0;
+            }
+        }
+        if (!allowLeft) {
+            if (xMod < 1) {
+                xModChange = 0;
+            }
+        }
+        if (!allowRight) {
+            if (xMod > 1) {
+                xModChange = 0;
+            }
+        }
+        this.x = this.x + xModChange;
+        this.y = this.y + yModChange;
         this.sy = syMod;
     }
 
@@ -288,12 +391,13 @@ let collumNum = 3;
 let rowNum = 1;
 let roomNum = 3;
 let shawdowMoving = false;
+
 let FredRoomMove = () => {
     let randNum = Math.random();
 
     const interval = {};
 
-    gameMap.forEach((room) => {
+    Room.getAllRooms().forEach((room) => {
         room.intervals.forEach((interval, index) => {
             // @ts-ignore
             clearInterval(interval.id);
@@ -302,34 +406,43 @@ let FredRoomMove = () => {
     });
 
     // @ts-ignore
-    currentRoom = gameMap.find(
-        (room) => room.x === building1.sx && room.y === building1.sy
+    Room.setCurrentRoom(
+        Room.getAllRooms().find(
+            (room) =>
+                room.cordinates.x === building1.sx &&
+                room.cordinates.y === building1.sy
+        )
     );
 
-    if (randNum > 0.5 || currentRoom?.moveShadow === null) {
+    // @ts-ignore
+    if (randNum > 0.5 || Room.getCurrentRoom().moveShadow === null) {
         shadowFred.x = 999999;
         shadowFred.y = 999999;
         shadowInRoom = false;
     }
-    if (randNum < 0.5 && currentRoom?.moveShadow !== null) {
+    // @ts-ignore
+    if (randNum < 0.5 && Room.getCurrentRoom().moveShadow !== null) {
         // shadowFred.draw();
         shadowFred.x = 785;
         shadowFred.y = 500;
         shadowInRoom = true;
     }
 
-    if (currentRoom?.moveShadow !== null && shadowInRoom === true) {
+    // @ts-ignore
+    if (Room.getCurrentRoom().moveShadow !== null && shadowInRoom === true) {
         let intervalId = setInterval(
             moveShadowFred,
             500,
-            currentRoom?.moveShadow
+            // @ts-ignore
+            Room.getCurrentRoom().moveShadow
         );
         interval.id = intervalId;
         interval.start = Date.now();
         // @ts-ignore
-        currentRoom.intervals.push(interval);
+        Room.getCurrentRoom().intervals.push(interval);
         shawdowMoving = true;
     }
+    console.log(Room.getCurrentRoom());
 };
 
 let update = () => {
@@ -385,12 +498,13 @@ let update = () => {
     } else {
         shadowTalk.y = 0;
     }
-    if (currentRoom.room === 0) {
+    // @ts-ignore
+    if (Room.getCurrentRoom().room === 21) {
         err.draw();
     }
     makeCover.draw();
 
-    gameMap.forEach((room) => {
+    Room.getAllRooms().forEach((room) => {
         room.intervals.forEach((interval, index) => {
             // @ts-ignore
             if (Date.now() - interval.start > 15000) {
@@ -411,7 +525,10 @@ const spriteChangerBonnie = () => {
 };
 
 // @ts-ignore
-setInterval(spriteChangerBonnie, 2500 / Bonnie.getMoveSpeed());
+bonnieWalkCycleInterval = setInterval(
+    spriteChangerBonnie,
+    2500 / Bonnie.getMoveSpeed()
+);
 
 const spriteChangerShadowFred = () => {
     shadowFred.sx = shadowFred.sx + 200;
@@ -436,5 +553,25 @@ window.addEventListener("keypress", (event) => {
     }
     if (pressedKey === "S") {
         Bonnie.move(0, Bonnie.getMoveSpeed(), 0, 0);
+    }
+    if (pressedKey === "+") {
+        if (Bonnie.getMoveSpeed() < 35) {
+            Bonnie.setMoveSpeed(Bonnie.getMoveSpeed() + 5);
+            clearInterval(bonnieWalkCycleInterval);
+            bonnieWalkCycleInterval = setInterval(
+                spriteChangerBonnie,
+                2500 / Bonnie.getMoveSpeed()
+            );
+        }
+    }
+    if (pressedKey === "-") {
+        if (Bonnie.getMoveSpeed() > 5) {
+            Bonnie.setMoveSpeed(Bonnie.getMoveSpeed() - 5);
+            clearInterval(bonnieWalkCycleInterval);
+            bonnieWalkCycleInterval = setInterval(
+                spriteChangerBonnie,
+                2500 / Bonnie.getMoveSpeed()
+            );
+        }
     }
 });
