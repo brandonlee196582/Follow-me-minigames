@@ -98,7 +98,7 @@ Room.addRoom(
 Room.addRoom(new Room(18, { x: 593, y: 312 }, up, []));
 Room.addRoom(new Room(19, { x: 593, y: 445 }, up, []));
 Room.addRoom(new Room(20, { x: 593, y: 578 }, up, []));
-Room.addRoom(new Room(21, { x: 769, y: 46 }, null));
+Room.addRoom(new Room(21, { x: 769, y: 46 }, null, []));
 Room.addRoom(new Room(22, { x: 769, y: 179 }, up, []));
 Room.addRoom(new Room(23, { x: 769, y: 312 }, up, []));
 Room.addRoom(new Room(24, { x: 769, y: 445 }, null, []));
